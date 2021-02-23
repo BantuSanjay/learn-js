@@ -5,4 +5,5 @@ this includes
  - digital watch
  - todo list
  -  form validation
+ - prime numbers
  
