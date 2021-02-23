@@ -4,4 +4,3 @@ this includes
  - calculator
  - digital watch
  - todo list
- -  form validation
