@@ -5,3 +5,4 @@ this includes
  - digital watch
  - todo list
  - facebook page 
+ - instagaram
