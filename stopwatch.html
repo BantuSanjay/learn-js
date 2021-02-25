@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <style>
+            #stopwatch {
+                width: 250px;
+                height: 250px;
+                border: 2px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="stopwatch">00:00:00
+            <button onclick=""myTimer = setInterval(start, 1000)"">start</button>
+            <button onclick="stop">stop</button>
+            <button onclick="restart()">restart</button>
+        </div>
+        <script>
+            function start() {
+                var count = 0;
+                document.getElementById("stopwatch").innerHTML = ++c;
+            }
+        </script>       
+    </body>
+</html>
