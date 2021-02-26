@@ -6,3 +6,4 @@ this includes
  - todo list
  - facebook page 
  - instagaram
+ - snapchat
