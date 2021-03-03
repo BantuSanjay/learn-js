@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <style>
+            @font-face {
+                font-family: 'digital-7'; 
+                src: url('../fonts/digital-7.ttf');
+            }
+            .font{
+                font-family:digital-7;
+                font-size: 30px;
+                position:absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transform: translate(-50%,-50%);
+                margin-top: 40px;
+                margin-left:15px;
+               
+            }
+            body{
+                background:#ffff;
+            }
+            h1{
+                margin: 0px;
+                padding: 0px;
+            }
+            .clock{
+                width: 40px;
+                height: 80px;
+                color: #fcfaff;
+                border: 3px solid white;
+                background-color: black;
+                border-radius: 40px;
+                padding: 30px 50px;
+                position: absolute;
+                top: 60%;
+                margin-left: 150px;
+                transform: rotate(12deg);
+            }
+            
+            img{
+                width:1200px;
+                height: 1200px;
+                display: flex;
+                align-items:center;
+                justify-content: center;
+            }
+            .band{
+                width: 45px;
+                height: 55px;
+                position: absolute;
+                top: 52%;
+                background-color: black;
+                border: 3px solid white;
+                margin-left: 220px;
+                transform: rotate(12deg);
+            }
+            .band2{
+                width: 45px;
+                height: 80px;
+                background-color: black;
+                border: 3px solid white;
+                position: absolute;
+                top: 81%;
+                margin-left: 170px;
+                transform: rotate(12deg);
+            }
+        </style>
+    </head>
+    <body>
+        <img src="https://st.depositphotos.com/1001286/3978/i/950/depositphotos_39788169-stock-photo-empty-open-woman-hand-on.jpg">
+        <div class="band">
+        </div>
+        <div class="band1">
+        </div>
+        <div class="band2">
+        </div>
+        <div class="band3">
+        </div>
+        <div class="container">
+            <div class="clock">
+                <h1 class="font">
+                    <span id="hours">12</span>
+                    <span>:</span>
+                    <span id="minutes">60</span>
+                    <span>:</span>
+                    <span id="Seconds">60</span><br>
+                    <span id="am-or-pm">AM</span>
+                </h1>
+            </div>
+        </div>
+        <script>
+            function updateTime(){
+                var dateTime = new Date();
+                var hours = dateTime.getHours();
+                var minutes = dateTime.getMinutes();
+                var seconds = dateTime.getSeconds();
+                var am_or_pm = document.getElementById("am-or-pm");
+
+                if(hours >= 12){
+                    am_or_pm.innerHTML = 'PM';
+                }
+                else{
+                    am_or_pm.innerHTML = 'AM';
+                }
+                if(hours > 12){
+                    hours = hours - 12;
+                }
+
+                document.getElementById("hours").innerHTML = hours;
+                document.getElementById("minutes").innerHTML = minutes;
+                document.getElementById("Seconds").innerHTML = seconds;
+                setInterval(updateTime);    
+            }
+            updateTime();
+        </script>
+    </body>
+</html>
