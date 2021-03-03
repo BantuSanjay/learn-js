@@ -1,24 +1,102 @@
 <html>
     <head>
         <style>
-            #stopwatch {
-                width: 250px;
-                height: 250px;
-                border: 2px solid black;
+            body{
+                background-color:skyblue;
             }
+            #stopwatch{
+                width: 500px;
+                height: 300px;
+                border: 5px solid black;
+                margin-top: 180px;
+                margin-left: 400px;
+                background-color: white;
+            }
+            h2{
+                margin-top: 20px;
+                font-size: 50px;
+                font-family: sans-serif;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+            }
+            h1{
+                font-size: 50px;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+            }
+            #start{
+                width: 80px;
+                height: 50px;
+                font-size: 20px;
+                font-family:sans-serif;
+                font-weight: bold;
+                margin-left: 60px;
+                border: 3px solid black;
+            }
+            #stop{
+                width: 80px;
+                height: 50px;
+                font-size: 20px;
+                font-family:sans-serif;
+                font-weight: bold;
+                margin-left: 60px;
+                border: 3px solid black;
+            }
+            #clear{
+                width: 80px;
+                height: 50px;
+                font-size: 20px;
+                font-family:sans-serif;
+                font-weight: bold;
+                margin-left: 60px;
+                border: 3px solid black;
+            }
+
         </style>
     </head>
-    <body>
-        <div id="stopwatch">00:00:00
-            <button onclick=""myTimer = setInterval(start, 1000)"">start</button>
-            <button onclick="stop">stop</button>
-            <button onclick="restart()">restart</button>
-        </div>
-        <script>
-            function start() {
-                var count = 0;
-                document.getElementById("stopwatch").innerHTML = ++c;
+<body>
+    <div id="Stopwatch">
+    <h2>Stop Watch</h2>
+    <h1><time>00:00:00</time> </h1>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+    <button id="clear">clear</button>
+</div>
+    <script>
+        var h1 = document.getElementsByTagName('h1')[0],
+            start = document.getElementById('start'),
+            stop = document.getElementById('stop'),
+            clear = document.getElementById('clear'),
+            seconds = 0, minutes = 0, hours = 0,t;
+
+        function add() { 
+            seconds++;
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes >= 60) {
+                    minutes = 0;
+                    hours++;
+                }
             }
-        </script>       
-    </body>
+
+            h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+            timer();
+        }
+        function timer() {
+            t = setTimeout(add, 1000);
+        }
+        start.onclick = timer;
+        stop.onclick = function () {
+            clearTimeout(t);
+        }
+        clear.onclick = function () {
+            h1.textContent = "00:00:00";
+            seconds = 0; minutes = 0; hours = 0;
+        }
+    </script>
+</body>
+
 </html>
