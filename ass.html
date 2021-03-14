@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #form{
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="mainform">
+            <ol id="mainQuestion"></ol>
+                <input type="button" id="btn" value="Enter your Question" onclick="myFunction()"/>
+        </div>
+        <div id="form">
+            <ol id="questionbox">
+                    <input type="text" id="question" placeholder="Enter question"/><br>
+            </ol>
+            <div id="optioninput">
+        <ol id="myUL" type="i">
+            <li>
+            <input type="text" id="text" placeholder="Enter option"/>
+            <input type="button" id="addbtn" value="Add"  onclick="addingOption()"/>
+            </li>
+            </ol>
+            <input type="button" id="cancelbtn" value="Cancel" onclick="cancelingOption()" />
+            <input type="button" id="submitbtn" value="Submit" onclick="submitingOption()" />
+        </div>
+    </div>
+        <script>
+            function myFunction(){
+                var x = document.querySelector("#mainform");
+                var y = document.querySelector("#form");
+                if(x.style.display="none"){
+                    y.style.display="block";
+                }
+                else{
+                    x.style.display="block";
+                    y.style.display="none";
+                }
+            }
+            function addingOption(){
+                var x =document.querySelector("#text").value;
+                var y = document.createElement("input");
+                var z = document.createElement("input");
+                var list = document.createElement("li");
+                z.appendChild(document.createTextNode(x));
+                z.setAttribute("type","text");
+                z.setAttribute("id","text");
+                z.setAttribute("placeholder","Enter Your Option");
+                y.appendChild(document.createTextNode(x));
+                y.setAttribute("type","button");
+                y.setAttribute("value","Delete");
+                y.setAttribute("class","text");
+                y.setAttribute("onClick","deleteOption()");
+                var a = document.querySelector("#myUL").appendChild(list);
+                a.appendChild(z);
+                var b = document.querySelector("#myUL").appendChild(list);
+                b.appendChild(y);
+            }
+            function deleteOption(){
+                var x = document.querySelectorAll(".text");
+                for(var i=0;i<x.length;i++){
+                    x[i].onclick = function(){
+                        var div = this.parentElement;
+                        div.style.display = "none";
+                    }
+                }
+            }
+            function cancelingOption(){ 
+                var x = document.querySelector("#form");
+                var y = document.querySelector("#mainform");
+                if(x.style.display="none"){
+                    y.style.display="block";
+                }else{
+                    x.style.display="block";
+                    y.style.display="none";
+                }
+            } 
+            function submitingOption(){
+                document.querySelector("#mainform").style.display="block";
+                document.querySelector("#form").style.display="none";
+                var x = document.querySelector("#mainQuestion");
+                var a = document.querySelector("#question").value;
+                var li = document.createElement("li");
+                li.append(a);
+                x.append(li);
+                var t = document.querySelectorAll("#text");
+                var v =document.createElement("ol");
+                var lii =document.createElement("li");
+                lii.setAttribute("type","i");
+                var liii =document.createElement("div");
+                for(var i=0;i<t.length;i++){
+                    var s = t[i].value;
+                    liii.append(s);
+                    lii.append(liii);
+                    v.append(lii);
+                    x.append(v);
+                }
+                document.querySelector("#mainform").style.display = "";
+            }
+        </script>
+    </body>
+</html>
+
