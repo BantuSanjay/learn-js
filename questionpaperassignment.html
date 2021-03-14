@@ -83,6 +83,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="mainform">
         <ol id="mainQuestion"></ol>
@@ -105,73 +106,60 @@
     </div>
     <script>
         function myFunction() {
-            var x = document.querySelector("#mainform");
-            var y = document.querySelector("#form");
-            if (x.style.display = "none") {
-                y.style.display = "block";
-            }
-            else {
-                x.style.display = "block";
-                y.style.display = "none";
-            }
+            document.querySelector("#mainform").style.display = "none";
+            document.querySelector("#form").style.display = "block";
         }
         function addingOption() {
-            var x = document.querySelector("#text").value;
-            var y = document.createElement("input");
-            var z = document.createElement("input");
+            var maintext = document.querySelector("#text").value;
+            var input = document.createElement("input");
+            var input1 = document.createElement("input");
             var list = document.createElement("li");
-            z.appendChild(document.createTextNode(x));
-            z.setAttribute("type", "text");
-            z.setAttribute("id", "text");
-            z.setAttribute("placeholder", "Enter Your Option");
-            y.appendChild(document.createTextNode(x));
-            y.setAttribute("type", "button");
-            y.setAttribute("value", "Delete");
-            y.setAttribute("class", "text");
-            y.setAttribute("onClick", "deleteOption()");
-            var a = document.querySelector("#myUL").appendChild(list);
-            a.appendChild(z);
-            var b = document.querySelector("#myUL").appendChild(list);
-            b.appendChild(y);
+            input1.appendChild(document.createTextNode(maintext));
+            input1.setAttribute("type", "text");
+            input1.setAttribute("id", "text");
+            input1.setAttribute("placeholder", "Enter Your Option");
+            input.appendChild(document.createTextNode(maintext));
+            input.setAttribute("type", "button");
+            input.setAttribute("value", "Delete");
+            input.setAttribute("class", "text");
+            input.setAttribute("onClick", "deleteOption()");
+            var textoutput = document.querySelector("#myUL").appendChild(list);
+            textoutput.appendChild(input1);
+            var buttonoutput = document.querySelector("#myUL").appendChild(list);
+            buttonoutput.appendChild(input);
         }
         function deleteOption() {
-            var x = document.querySelectorAll(".text");
-            for (var i = 0; i < x.length; i++) {
-                x[i].onclick = function () {
+            var text = document.querySelectorAll(".text");
+            for (var i = 0; i < text.length; i++) {
+                text[i].onclick = function () {
                     var div = this.parentElement;
                     div.style.display = "none";
                 }
             }
         }
         function cancelingOption() {
-            var x = document.querySelector("#form");
-            var y = document.querySelector("#mainform");
-            if (x.style.display = "none") {
-                y.style.display = "block";
-            } else {
-                x.style.display = "block";
-                y.style.display = "none";
-            }
+            document.querySelector("#form").style.display = "none";
+            document.querySelector("#mainform").style.display = "block";
         }
         function submitingOption() {
             document.querySelector("#mainform").style.display = "block";
             document.querySelector("#form").style.display = "none";
-            var x = document.querySelector("#mainQuestion");
-            var a = document.querySelector("#question").value;
-            var li = document.createElement("li");
-            li.append(a);
-            x.append(li);
-            var t = document.querySelectorAll("#text");
-            var v = document.createElement("ol");
-            for (var i = 0; i < t.length; i++) {
-            var lii = document.createElement("li");
-            lii.setAttribute("type", "i");
-                lii.append(t[i].value);
-                v.append(lii);
-                x.append(v);
-             t[i].value="";
+            var mainform = document.querySelector("#mainQuestion");
+            var question = document.querySelector("#question").value;
+            var list = document.createElement("li");
+            list.append(question);
+            mainform.append(list);
+            var text = document.querySelectorAll("#text");
+            var order = document.createElement("ol");
+            for (var i = 0; i < text.length; i++) {
+                var list1 = document.createElement("li");
+                list1.setAttribute("type", "i");
+                list1.append(text[i].value);
+                order.append(list1);
+                mainform.append(order);
+                text[i].value = "";
             }
-         document.querySelector("#question").value = "";
+            document.querySelector("#question").value = "";
         }
     </script>
 </body>
